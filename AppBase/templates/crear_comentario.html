@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block contenidoQCambia %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/crear_comentario.css' %}">
+<div class="container" style="max-width: 25rem;">
+  <div class="card text-white bg-dark mb-3" style="max-width: 25rem; padding: 1rem; max-height: 10rem;">
+<h1 style="color: yellow;">Comentar en "{{ tema.titulo }}"</h1>
+  <form class="input-group-prepend" style="background-color: rgb(34, 33, 36);" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Comentar">
+  </form>
+  <a href="{% url 'DetalleTema' tema.pk %}" class="btn btn-outline-info">Volver al detalle del tema</a>
+  </div>
+  </div>
+{% endblock contenidoQCambia %}

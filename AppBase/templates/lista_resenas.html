@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block contenidoQCambia %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/lista_resenas.css' %}">
+<div class="container" style="max-width: 80rem;">
+    <div class="card text-white bg-dark mb-3" style="max-width: 80rem; padding: 2rem; max-height: auto;">
+        <h1 style="color: yellow;">Lista de Reseñas</h1>
+        <table class="table table-hover table-dark">
+            <thead>
+                <tr style="background-color: yellow;">
+                    <th style="background-color: yellow;" class="columna-autor">Autor</th>
+                    <th style="background-color: yellow;" class="columna-contenido">Contenido</th>
+                    <th style="background-color: yellow;" class="columna-pelicula">Pelicula</th>
+                    <th style="background-color: yellow;" class="columna-acciones">Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for resena in reseñas %}
+                <tr>
+                    <td style="color: white;">{{ resena.autor }}</td>
+                    <td style="color: white;">{{ resena.contenido }}</td>
+                    <td style="color: white;">{{ resena.pelicula }}</td>
+                    <td>
+                        <div style="display: flex; column-gap: 5px;">
+                            <form action="{% url 'EliminarResena' resena.id %}" method="POST">{% csrf_token %}
+                                <button type="submit" class="btn btn-outline-danger">Eliminar</button>
+                            </form>
+                            <button style="background-color: black;">
+                                <a href="{% url 'EditarResena' resena.id %}" class="btn btn-outline-success">Editar</a>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock contenidoQCambia %}

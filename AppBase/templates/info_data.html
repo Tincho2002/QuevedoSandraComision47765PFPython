@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block contenidoQCambia %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/info_data.css' %}">
+<div class="container" style="max-width: 40rem;">
+    <div class="card text-white bg-dark mb-3" style="max-width: 40rem; padding: 2rem; max-height: 35rem;">
+        <div style="margin-top: 20px;">
+            {% url 'ListaResenas' as url %}
+            <button type="button" onclick="window.location.href='{{ url }}'">Ver reseñas</button>
+        </div>
+    </div>
+</div>
+{% endblock contenidoQCambia %}

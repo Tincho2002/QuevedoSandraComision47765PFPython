@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block contenidoQCambia %}
+<link rel="stylesheet" type="text/css" href="{% static 'login.css' %}">
+<div class="container" style="max-width: 50rem;">
+    <div class="card text-white bg-dark mb-3" style="max-width: 50rem; padding: 2rem;">
+        <h1 style="color: yellow;">Login de usuarios</h1>
+        <form action="" method="POST">{% csrf_token %}
+            {{mi_formulario.as_p}}
+            <button class="btn btn-outline-warning" type="submit">Iniciar sesión</button>
+        </form>
+    </div>
+</div>
+{% endblock contenidoQCambia %}

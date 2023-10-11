@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block contenidoQCambia %}
+<link rel="stylesheet" type="text/css" href="{% static 'registro_usuarios.css' %}">
+<div class="container" style="max-width: 30rem;">
+    <div class="card text-white bg-dark mb-3" style="max-width: 30rem; padding: 1rem; max-height: 35rem;">
+    <h2 class="heading-black text-center" style="color: yellow;">Registro de usuarios</h2>
+
+    <form action="{% url 'RegistroUsuarios' %}" class="input-group-prepend" style="background-color: rgb(34, 33, 36);" method="POST">{% csrf_token %}
+        {{mi_formulario.as_p}}
+        <button type="submit" class="btn btn-outline-success">Registrar</button>
+    </form>
+</div>    
+</div>
+{% endblock contenidoQCambia %}

@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block contenidoQCambia %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/inicio.css' %}">
+
+<div class="centrar-texto">
+    <img class="center" height="300rem" margin="10rem" src="{% static 'img/iconos-del-cine-23933292.webp' %}"
+        alt="Imagen cine">
+    <br>
+    <br>
+    <br>
+    <p style="color: yellow;">Por favor hace click en lo que quieras acceder!</p>
+
+    <h4>{{mensaje}}</h4>
+
+    {% for fields_error in mi_formulario.errors.values %}
+
+    {% for error in fields_error %}
+    <li>{{error}}</li>
+    {% endfor %}
+    {% endfor %}
+</div>
+{% endblock contenidoQCambia %}

@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block contenidoQCambia %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/busq_nombre.css' %}">
+<div class="container" style="max-width: 25rem;">
+    <div class="card text-white bg-dark mb-3" style="max-width: 25rem; padding: 1rem; max-height: 20rem;">
+        <form action="{% url 'BuscarNombre' %}" method="GET">{% csrf_token %}
+            <p style="color: yellow;">Nombre de pelicula que queres buscar:  </p>
+            <input type="text" name="nombre" id="">
+            <button type="submit" class="btn btn-outline-success"> Buscar </button>
+        </form>
+    </div>
+</div>
+{% endblock contenidoQCambia %}

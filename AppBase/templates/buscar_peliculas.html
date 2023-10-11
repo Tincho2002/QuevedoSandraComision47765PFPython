@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block contenidoQCambia %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/buscar_peliculas.css' %}">
+<div class="container" style="max-width: 50rem;">
+  <div class="card text-white bg-dark mb-3" style="max-width: 50rem; padding: 2rem;">
+    <h1 class="text-center" style="color: yellow;">Buscar Peliculas</h1>
+    <div class="container">
+      <form method="GET" action="{% url 'BusquedaPeliculas' %}">
+        <div class="form-group" style="background-color: lemonchiffon;">
+          <label>Buscar por:</label>
+          <div class="btn-group-dark" role="group">
+            {% url 'BuscarNombre' as url %}
+            <a type="button" class="btn btn-warning" onclick="window.location.href='{{ url }}'">NOMBRE</a>
+            {% url 'BuscarGenero' as url %}
+            <a type="button" class="btn btn-warning" onclick="window.location.href='{{ url }}'">GÉNERO</a>
+            {% url 'BuscarEmpresa' as url %}
+            <a type="button" class="btn btn-warning" onclick="window.location.href='{{ url }}'">EMPRESA</a>
+            {% url 'BuscarValoracion' as url %}
+            <a type="button" class="btn btn-warning" onclick="window.location.href='{{ url }}'">VALORACIÓN</a>
+          </div>
+        </div>
+        {% csrf_token %}
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block contenidoQCambia %}
+<link rel="stylesheet" type="text/css" href="{% static 'conversacion_create.css' %}">
+<div class="container" style="max-width: 40rem;">
+  <div class="card text-white bg-dark mb-3" style="max-width: 40rem; padding: 2rem; max-height: 35rem;">
+    <div class="container">
+      <h1 style="color: yellow;">Crear conversación</h1>
+
+      <form style="background-color: rgb(34, 33, 36);" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-outline-success">Enviar</button>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}

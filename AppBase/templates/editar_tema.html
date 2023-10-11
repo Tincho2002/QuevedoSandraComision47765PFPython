@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block contenidoQCambia %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/editar_tema.css' %}">
+<div class="container" style="max-width: 40rem;">
+  <div class="card text-white bg-dark mb-3" style="max-width: 35rem; padding: 1rem; max-height: 80rem;">
+    <h1 style="color: yellow;">Editar tema</h1>
+    <form style="background-color: rgb(34, 33, 36);" method="post" >
+      {% csrf_token %}
+      {{ form.as_p }}
+      <input type="submit" class="btn btn-outline-success" value="Actualizar">
+    </form>
+    <div class="contenidoCentrado">
+      <br>
+      {% url 'Foro' as url %}
+      <button type="button" class="btn btn-outline-info" onclick="window.location.href='{{ url }}'">Volver al
+        foro</button>
+    </div>
+  </div>
+</div>
+{% endblock contenidoQCambia %}

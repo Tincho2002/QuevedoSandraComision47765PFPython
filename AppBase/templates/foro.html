@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block contenidoQCambia %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/foro.css' %}">
+<div class="container" style="max-width: 30rem;">
+  <div class="card text-white bg-dark mb-3" style="max-width: 30rem; padding: 2rem;">
+    <div class="contenidoCentrado">
+      <h1 style="color: yellow;">Foro</h1>
+      <ul style="align-items: center;">
+        {% for tema in temas %}
+        <div style="display: flex; column-gap: 5px; align-items: center;">
+          <li><a href="{% url 'DetalleTema' tema.pk %}">{{ tema.titulo }}</a> - Creado por {{ tema.creador.username }}
+          </li>
+
+
+          <form action="{% url 'EliminarTema' tema.pk %}" method="POST">{% csrf_token %}
+            <button type="submit" class="btn btn-outline-danger">Eliminar</button>
+          </form>
+          <button style="background-color: black;">
+            <a     href="{% url 'EditarTema' tema.pk %}" class="btn btn-outline-success">Editar</a>
+          </button>
+        </div>
+        {% empty %}
+        <li>No hay temas disponibles.</li>
+        {% endfor %}
+      </ul>
+      <div style="margin-top: 20px;">
+        {% url 'CrearTema' as url %}
+        <button type="button" class="btn btn-outline-info" onclick="window.location.href='{{ url }}'">Crear nuevo
+          tema</button>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock contenidoQCambia %}

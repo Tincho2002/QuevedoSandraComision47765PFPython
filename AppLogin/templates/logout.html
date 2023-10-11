@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block contenidoQCambia %}
+<link rel="stylesheet" style="color: yellow;" type="text/css" href="{% static 'logout.css' %}">
+<div class="container" style="max-width: 80rem;">
+    <div class="card text-white bg-dark mb-3" style="max-width: 80rem; padding: 2rem;">
+        <img class="center" height="400px" src="{% static 'filmadora.jpeg' %}" alt="Imagen saludo">
+        <h1 style="color: yellow;">Gracias por visitarnos, te esperamos pronto</h1>
+        <div class="center" style="margin-top: 20px;">
+            {% url 'Inicio' as url %}
+            <button class="btn btn-outline-danger" onclick="window.location.href='{{ url }}'">Volver a la Home</button>
+        </div>
+    </div>
+</div>
+{% endblock contenidoQCambia %}

@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block contenidoQCambia %}
+<link rel="stylesheet" type="text/css" href="{% static 'conversacion_list.css' %}">
+<div class="container" style="max-width: 80rem;">
+  <div class="card text-white bg-dark mb-3" style="max-width: 80rem; padding: 2rem;">
+    <h1 style="color: yellow;">Conversaciones</h1>
+    <a href="{% url 'AppMensajes:CrearConversacion' %}" class="btn btn-sm btn-outline-info">Crear conversación</a>
+    <table class="table table-hover table-dark">
+      <thead>
+        <tr style="background-color: yellow;">
+          <th class="columna-remitente" style="background-color: yellow;">Remitente</th>
+          <th class="columna-destinatario" style="background-color: yellow;">Destinatario</th>
+          <th class="columna-ultimomensaje" style="background-color: yellow;">Último mensaje</th>
+          <th class="columna-fecha" style="background-color: yellow;">Fecha</th>
+          <th class="columna-acciones" style="background-color: yellow;">Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for conversacion in conversaciones %}
+        <tr>
+          <td style="color: white;">{{ conversacion.remitente }}</td>
+          <td style="color: white;">{{ conversacion.destinatario }}</td>
+          <td style="color: white;">{{ conversacion.mensaje }}</td>
+          <td style="color: white;">{{ conversacion.timestamp|date:"d/m/Y H:i" }}</td>
+          <td style="color: white;"><a href="{% url 'AppMensajes:VerConversacion' conversacion.id %}"
+              class="btn btn-sm btn-outline-warning">Ver conversación</a></td>
+        </tr>
+        {% empty %}
+        <tr>
+          <td style="color:lemonchiffon;" colspan="5">No hay conversaciones disponibles</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}

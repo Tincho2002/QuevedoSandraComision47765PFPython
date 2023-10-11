@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block contenidoQCambia %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/aboutme.css' %}">
+<div class="container" style="max-width: 80rem; ">
+    <div class="card text-white bg-dark mb-3" style="max-width: 80rem; padding: 2rem; ">
+        <h1 class="text-center" style="color: yellow;">Hola! Soy Sandra Quevedo</h1>
+        <img class="center" height="400px" src="{% static 'css/foto cv.jpeg' %}" alt="Imagen saludo">
+        <body>
+            <p class="text-center" style="color: lemonchiffon;">Nací el 07 de noviembre 1970, soy de Rosario, Argentina,
+                amante de los gatos, hincha ferviente de Boca Juniors y admiradora de Martin Palermo.</p>
+            <p class="text-center" style="color: lemonchiffon">Soy Contadora Pública, y me especialicé en Costos y
+                Gestión Empresarial y en Finanzas (Especialización y Maestria).</p>
+            <p class="text-center" style="color: lemonchiffon;">Meses antes de comenzar la pandemia tomé la decisión de
+                empezar a programar, considerando que además de ser afin a mi profesión, se iniciaba un gran y largo
+                camino colmado de desafíos.</p>
+            <p class="text-center" style="color: lemonchiffon;">Mi mayor deseo es crear mi propia aplicación orientada a
+                la masa salarial de RRHH, dado que trabajo en una empresa del sector público en un area asociada a dicha 
+                actividad.</p>
+            <p class="text-center" style="color: lemonchiffon;">El objetivo es automatizar ciertas actividades que un
+                sistema gestor de RRHH no contempla.</p>
+            <p class="text-center" style="color: lemonchiffon;">Comencé en CoderHouse en abril del 2022 con los cursos
+                de Desrrollo Web, JavaScript, ReactJs y React Native (Desarrollo de Aplicaciones).</p>
+            <p class="text-center" style="color: lemonchiffon;">Actualmente estoy finalizando este curso de Python orientado 
+                al desarrollo web en Coderhouse y luego continuar con programación R para más adelante encarar Data Science.</p>
+            <p class="text-center" style="color: lemonchiffon;">A continuación, dejo el acceso a mi repositorio en GitHub, 
+                donde se encuentran disponibles mis trabajos a la fecha...Agradezco tu tiempo aplicado a la lectura de estas 
+                simples líneas....Estamos en contacto!!!</p>
+            <div class="text-center" style="background-color: rgb(50, 49, 49);  padding: 2rem;">
+                <div style="margin-top: 20px;">
+                    <a href="https://github.com/Tincho2002" class="btn btn-outline-warning" target="_blank">Ir a
+                        Github</a>
+                </div>
+                <div style="margin-top: 20px;">
+                    {% url 'Inicio' as url %}
+                    <a type="button" class="btn btn-outline-danger" onclick="window.location.href='{{ url }}'">Volver al Inicio</a>
+                </div>
+            </div>
+        </body>
+    </div>
+</div>
+{% endblock contenidoQCambia %}

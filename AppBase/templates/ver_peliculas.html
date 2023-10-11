@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block contenidoQCambia %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/ver_peliculas.css' %}">
+<div class="container" style="max-width: 80rem;">
+    <div class="card text-white bg-dark mb-3" style="max-width: 80rem; padding: 2rem;">
+        <h1 class="text-center" style="color: yellow;">Lista de peliculas</h1>
+        <p style="color: yellow;" class="ordenar-por">Ordenar por:</p>
+        <ul>
+            <div class="card text-white bg-dark mb-3">
+                <form method="get" action="{% url 'ListaPeliculas' %}">
+                    <input type="hidden" name="orden" value="lanzamiento" />
+                    <button type="submit" class="btn btn-outline-warning">Fecha de lanzamiento</button>
+                </form>
+            </div>
+            <br>
+            <div class="card text-white bg-dark mb-3">
+                <form method="get" action="{% url 'ListaPeliculas' %}">
+                    <input type="hidden" name="orden" value="valoracion" />
+                    <button type="submit" class="btn btn-outline-warning">Valoración</button>
+                </form>
+            </div>
+        </ul>
+        <table class="table table-hover table-dark">
+            <thead>
+                <tr style="background-color: yellow;">
+                    <th style="background-color: yellow;" class="columna-nombre">Nombre</th>
+                    <th style="background-color: yellow;" class="columna-fecha-salida">Fecha de salida</th>
+                    <th style="background-color: yellow;" class="columna-genero">Género</th>
+                    <th style="background-color: yellow;" class="columna-empresa">Empresa</th>
+                    <th style="background-color: yellow;" class="columna-descripcion">Descripción</th>
+                    <th style="background-color: yellow;" class="columna-valoracion">Valoración</th>
+                    <th style="background-color: yellow;" class="columna-acciones">Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for pelicula in peliculas %}
+                <tr>
+                    <td style="color: white;">{{ pelicula.nombre }}</td>
+                    <td style="color: white;">{{ pelicula.fecha_salida }}</td>
+                    <td style="color: white;">{{ pelicula.genero }}</td>
+                    <td style="color: white;">{{ pelicula.empresa }}</td>
+                    <td style="color: white;">{{ pelicula.descripcion }}</td>
+                    <td style="color: white;">{{ pelicula.valoracion }}</td>
+                    <td>
+                        <div style="display: flex; column-gap: 5px;">
+                            <form action="{% url 'EliminarPelicula' pelicula.id %}" method="POST">{% csrf_token %}
+                                <button type="submit" class="btn btn-outline-danger">Eliminar</button>
+                            </form>
+                            <a href="{% url 'EditarPelicula' pelicula.id %}" class="btn btn-outline-success">Editar</a>
+                        </div>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <div style="margin-top: 20px;">
+            {% url 'AgregarPelicula' as url %}
+            <button class="btn btn-outline-warning" type="button" onclick="window.location.href='{{ url }}'">Agregar
+                Pelicula</button>
+        </div>
+
+        <div style="margin-top: 20px;">
+            {% url 'AgregarResena' as url %}
+            <button class="btn btn-outline-warning" type="button" onclick="window.location.href='{{ url }}'">Agregar
+                Reseña</button>
+        </div>
+
+        <div style="margin-top: 20px;">
+            {% url 'ListaResenas' as url %}
+            <button class="btn btn-outline-warning" type="button" onclick="window.location.href='{{ url }}'">Ver Reseñas
+                hechas</button>
+        </div>
+    </div>
+</div>
+{% endblock contenidoQCambia %}
